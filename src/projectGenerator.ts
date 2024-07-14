@@ -6,9 +6,14 @@ import { setupCiCd } from './ciCdSetup';
 import { setupLinters } from './linterSetup';
 import { setupReporting } from './reportingSetup';
 import { setupDocker } from './dockerSetup';
+import { setupAllureConfig } from './allureConfig';
 
 function initializeCypress(projectPath: string) {
   execSync('npx cypress install', { cwd: projectPath, stdio: 'inherit' });
+}
+
+function installDependencies(projectPath: string) {
+  execSync('npm install', { cwd: projectPath, stdio: 'inherit' });
 }
 
 export function generateProject(config: any) {
@@ -19,7 +24,8 @@ export function generateProject(config: any) {
 
   // Crear archivos base según las opciones seleccionadas
   createFileFromTemplate(projectPath, 'package.json', config);
-  createFileFromTemplate(projectPath, 'README.md', config);
+  const readmeTemplate = config.language === 'spanish' ? 'README_es.md' : 'README_en.md';
+  createFileFromTemplate(projectPath, readmeTemplate, config);
 
   // Configurar herramientas de CI/CD
   if (config.ciCd) {
@@ -41,8 +47,16 @@ export function generateProject(config: any) {
     setupDocker(projectPath, config);
   }
 
+  // Instalar dependencias
+  installDependencies(projectPath);
+
   // Inicializar Cypress
   initializeCypress(projectPath);
+
+  // Configurar Allure
+  if (config.reporting === 'allure') {
+    setupAllureConfig(projectPath);
+  }
 
   console.log('Proyecto generado con éxito en:', projectPath);
 }

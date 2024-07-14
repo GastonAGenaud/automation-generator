@@ -1,0 +1,33 @@
+# {{projectName}}
+
+{{description}}
+
+## Instalación
+
+```bash
+npm install
+```
+
+## Uso
+
+```bash
+npm run start
+```
+
+Este comando abrirá la interfaz de usuario de Cypress. Para ejecutar las pruebas en modo headless, utiliza:
+
+```bash
+npm run test
+```
+
+{{#if allure}}
+## Reportes con Allure
+
+Para generar y ver los reportes de Allure, utiliza:
+
+```bash
+npm run allure:report
+```
+
+Los reportes de Allure se almacenan en la carpeta `allure-results`.
+{{/if}}

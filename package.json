@@ -1,14 +1,13 @@
 {
   "name": "automation-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Automation project generator of automations projects depends on the user's choice",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gaston Genaud",
   "license": "ISC",
   "devDependencies": {
     "@types/inquirer": "^9.0.7",

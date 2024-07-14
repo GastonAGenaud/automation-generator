@@ -1,0 +1,33 @@
+# {{projectName}}
+
+{{description}}
+
+## Installation
+
+```bash
+npm install
+```
+
+## Usage
+
+```bash
+npm run start
+```
+
+This command will open the Cypress UI. To run the tests in headless mode, use:
+
+```bash
+npm run test
+```
+
+{{#if allure}}
+## Reports with Allure
+
+To generate and view Allure reports, use:
+
+```bash
+npm run allure:report
+```
+
+Allure reports are stored in the `allure-results` folder.
+{{/if}}
